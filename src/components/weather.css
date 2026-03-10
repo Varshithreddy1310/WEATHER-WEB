@@ -1,0 +1,116 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  min-height: 100vh;
+  width: 100%;
+  background-color: black; /* solid black for all screen sizes */
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  display: grid;
+  place-items: center;
+  scrollbar-gutter: stable both-edges;
+  overflow-x: hidden;
+}
+
+
+/* --- Main box --- */
+.search-box {
+  background: #4c4949;
+  /* consistent, symmetric padding */
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: 0 0 30px rgba(255, 215, 0, 0.25);
+  /* clamp keeps it perfectly centered & responsive */
+  width: clamp(320px, 92vw, 560px);
+  margin-inline: auto;         /* horizontal centering safety */
+  text-align: center;
+  animation: fadeIn 0.9s ease-in-out;
+  transition: transform 0.3s ease;
+}
+
+/* (Optional) Remove hover scale to avoid micro “nudge” on narrow screens */
+/* .search-box:hover { transform: scale(1.02); } */
+
+/* Headings */
+.search-box h1 {
+  font-size: 2.4rem;
+  color: #ffd700;
+  margin-bottom: 1.25rem;
+  letter-spacing: 2px;
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
+}
+
+.search-box h2 {
+  font-size: 1.8rem;
+  margin-top: 1.25rem;
+  color: #ffcc00;
+  border-bottom: 2px solid rgba(255, 215, 0, 0.4);
+  padding-bottom: 0.5rem;
+  display: inline-block;
+}
+
+/* Weather Data */
+.data p {
+  font-size: 1.2rem;
+  margin: 0.6rem 0;
+  color: #e0e0e0;
+  transition: color 0.3s ease;
+}
+.data p:hover { color: #ffd700; }
+
+/* MUI TextField */
+.search-box .MuiOutlinedInput-root {
+  color: #f5f5f5;
+  font-size: 1.2rem;
+  background: rgba(74, 57, 57, 0.8);
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.2);
+  padding: 6px 12px;
+}
+.search-box .MuiOutlinedInput-notchedOutline { border-color: #d8d5c5; }
+.search-box .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline { border-color: #e3ded6; }
+.search-box .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+  border-color: #FFCC00;
+  box-shadow: 0 0 12px rgba(10, 9, 1, 0.7);
+}
+/* White placeholder so it’s visible on dark */
+.search-box input::placeholder {
+  color: #ffffff !important;
+  opacity: 0.9;
+  font-size: 1.1rem;
+}
+
+/* Buttons */
+.MuiButton-root {
+  background: #ffd700 !important;
+  color: #111 !important;
+  font-weight: bold;
+  border-radius: 12px !important;
+  padding: 0.7rem 1.5rem !important;
+  font-size: 1.1rem !important;
+  margin: 0.5rem;
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.35);
+  transition: all 0.3s ease !important;
+}
+.MuiButton-root:hover {
+  background: #ffcc00 !important;
+  transform: translateY(-2px);
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* Mobile tweaks */
+@media (max-width: 480px) {
+  .search-box { padding: 1.25rem; width: 94vw; }
+  .search-box h1 { font-size: 2rem; }
+  .search-box h2 { font-size: 1.4rem; }
+  .data p { font-size: 1rem; }
+}
